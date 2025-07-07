@@ -1,13 +1,11 @@
-require('dotenv').config();
-
-
-const connectDB = require('./config/db');
+const express = require('express');
 const app = require('./app');
+const connectDB = require('./config/db');
 
-const PORT = process.env.PORT || 5000;
+// Connect to MongoDB
+connectDB();
 
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-  });
+const PORT = 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
